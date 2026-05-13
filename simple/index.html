@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrick Gunardi | Portofolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Inter", "Segoe UI", sans-serif;
+      --bg: #050a18;
+      --panel: rgba(10, 20, 40, 0.95);
+      --text: #f4f7ff;
+      --mute: #9fb6d5;
+      --accent: #4f7cff;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: rgba(79, 124, 255, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(79, 124, 255, 0.16), transparent 28%),
+                  radial-gradient(circle at 80% 10%, rgba(93, 180, 255, 0.1), transparent 22%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 45%);
+      pointer-events: none;
+    }
+
+    body, button, input, a { font-family: inherit; }
+
+    .page {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    header {
+      display: grid;
+      gap: 32px;
+      padding: 32px;
+      border-radius: 32px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 120px rgba(5, 10, 24, 0.3);
+    }
+
+    @media (min-width: 840px) {
+      header {
+        grid-template-columns: 1fr 360px;
+        align-items: center;
+      }
+    }
+
+    .intro {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(79, 124, 255, 0.08);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.8rem, 4vw, 4.2rem);
+      letter-spacing: -0.05em;
+      line-height: 1.02;
+      max-width: 12ch;
+    }
+
+    h2 {
+      margin: 0 22px 24px 0;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--mute);
+      max-width: 76ch;
+      font-weight: 400;
+    }
+
+    p {
+      margin: 0 0 26px;
+      max-width: 70ch;
+      color: var(--mute);
+      font-size: 1rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 26px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), #5b9eff);
+      box-shadow: 0 18px 35px rgba(79, 124, 255, 0.25);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary:hover {
+      box-shadow: 0 24px 50px rgba(79, 124, 255, 0.3);
+    }
+
+    .profile-card {
+      display: grid;
+      gap: 24px;
+      justify-items: center;
+      padding: 34px 28px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(79, 124, 255, 0.16), transparent 35%);
+      pointer-events: none;
+    }
+
+    .profile-photo {
+      width: 195px;
+      height: 195px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(79, 124, 255, 0.35);
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+      display: grid;
+      place-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .profile-role {
+      margin: 0;
+      color: var(--mute);
+      font-size: 0.95rem;
+      text-align: center;
+      max-width: 18rem;
+    }
+
+    .section {
+      margin-top: 44px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-title strong {
+      color: var(--accent);
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font-size: 1.45rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card, .card-small {
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .card {
+      padding: 32px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+    }
+
+    .card-small {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card-small:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79, 124, 255, 0.3);
+    }
+
+    .skill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: rgba(79, 124, 255, 0.12);
+      color: var(--text);
+      font-weight: 600;
+      transition: transform 0.18s ease;
+    }
+
+    .skill-badge:hover {
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      min-height: 32px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline-item {
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-meta {
+      color: var(--mute);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(79, 124, 255, 0.16);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 700;
+      max-width: fit-content;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-item {
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      gap: 6px;
+    }
+
+    .contact-item span:first-child {
+      color: var(--mute);
+      font-size: 0.92rem;
+    }
+
+    .contact-item span:last-child {
+      color: var(--text);
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 18px;
+      background: rgba(79, 124, 255, 0.08);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.18s ease, background-color 0.18s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      background: rgba(79, 124, 255, 0.18);
+    }
+
+    footer {
+      margin-top: 32px;
+      text-align: center;
+      color: var(--mute);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 28px 16px 40px;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .profile-card {
+        padding: 28px 22px;
+      }
+
+      .profile-photo {
+        width: 160px;
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="intro">
+        <span class="eyebrow">Future Professional</span>
+        <h1 class="glow">Patrick Gunardi</h1>
+        <h2>High School Student | Fast Learner | Future Professional</h2>
+        <p>Saya adalah siswa SMA yang memiliki semangat belajar tinggi, disiplin, dan kemampuan bekerja sama yang kuat. Saya mampu mengatur waktu antara sekolah dan tanggung jawab lain, cepat beradaptasi di lingkungan baru, dan selalu siap mempelajari hal baru untuk mendukung perkembangan perusahaan.</p>
+        <div class="buttons">
+          <a class="button primary" href="#contact">Download CV</a>
+          <a class="button secondary" href="#skills">Lihat Skill</a>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-photo">
+          <img src="../profile.jpeg" alt="Foto profil Patrick Gunardi" />
+        </div>
+        <p class="profile-name">Patrick Gunardi</p>
+        <p class="profile-role">Siswa SMA | Magang di PT Gotrade</p>
+      </div>
+    </header>
+
+    <section class="section" id="skills">
+      <div class="section-title">
+        <strong>Skill</strong>
+        <h3>Keahlian Utama</h3>
+      </div>
+      <div class="grid-3">
+        <div class="card-small">
+          <div class="skill-badge"><span class="icon">💬</span> Komunikasi</div>
+          <p class="card-text">Kemampuan menyampaikan ide dengan jelas dan efektif dalam tim.</p>
+        </div>
+        <div class="card-small">
+          <div class="skill-badge"><span class="icon">🤝</span> Teamwork</div>
+          <p class="card-text">Terbiasa berkolaborasi dengan teman dan mengikuti instruksi dengan baik.</p>
+        </div>
+        <div class="card-small">
+          <div class="skill-badge"><span class="icon">🖌️</span> Desain & Editing</div>
+          <p class="card-text">Paham konsep desain sederhana untuk presentasi dan materi visual.</p>
+        </div>
+        <div class="card-small">
+          <div class="skill-badge"><span class="icon">📊</span> Microsoft Office</div>
+          <p class="card-text">Mahir menggunakan Excel dan Word untuk tugas administrasi dan laporan.</p>
+        </div>
+        <div class="card-small">
+          <div class="skill-badge"><span class="icon">💻</span> Coding Dasar</div>
+          <p class="card-text">Memiliki dasar pemrograman web serta pengalaman membuat halaman website sederhana.</p>
+        </div>
+        <div class="card-small">
+          <div class="skill-badge"><span class="icon">⚡</span> Adaptabilitas</div>
+          <p class="card-text">Cepat belajar dan dapat menyesuaikan diri dengan proses baru di lingkungan kerja.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-title">
+        <strong>Pendidikan</strong>
+        <h3>Riwayat Pendidikan</h3>
+      </div>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span>SMA UPH College</span>
+              <span class="timeline-meta">2023 - Sekarang</span>
+            </div>
+            <p class="timeline-meta">Menjalani pendidikan SMA dengan fokus pengembangan keterampilan akademik dan teknologi.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span>SMP Santo Albertus</span>
+              <span class="timeline-meta">2020 - 2023</span>
+            </div>
+            <p class="timeline-meta">Membangun dasar disiplin dan kerja keras dalam lingkungan sekolah yang mendukung.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-title">
+        <strong>Pengalaman</strong>
+        <h3>Organisasi & Project</h3>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span>Magang di PT Gotrade</span>
+              <span class="timeline-meta">2025</span>
+            </div>
+            <p>Sebagai intern, saya berkontribusi pada pengembangan konten digital, administrasi, dan kolaborasi tim untuk mendukung operasional perusahaan.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span>Project Website Sekolah</span>
+              <span class="timeline-meta">2024</span>
+            </div>
+            <p>Merancang dan mengembangkan website sederhana untuk kegiatan sekolah, termasuk struktur, desain visual, dan konten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="achievements">
+      <div class="section-title">
+        <strong>Pencapaian</strong>
+        <h3>Sertifikat & Penghargaan</h3>
+      </div>
+      <div class="grid-3">
+        <div class="card-small">
+          <div class="tag">Sertifikat</div>
+          <p class="card-text">Pelatihan Microsoft Excel dasar dan lanjutan untuk mendukung tugas administrasi.</p>
+        </div>
+        <div class="card-small">
+          <div class="tag">Penghargaan</div>
+          <p class="card-text">Diakui sebagai siswa teladan dengan kerja tim terbaik dalam kegiatan sekolah.</p>
+        </div>
+        <div class="card-small">
+          <div class="tag">Prestasi</div>
+          <p class="card-text">Aktif dalam project kreatif yang menggabungkan teknologi dan desain untuk presentasi sekolah.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-title">
+        <strong>Kontak</strong>
+        <h3>Media Sosial & Informasi</h3>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <ul class="contact-list">
+            <li class="contact-item"><span>Email</span><span>gunardipatrick@gmail.com</span></li>
+            <li class="contact-item"><span>Sekolah</span><span>UPH College</span></li>
+            <li class="contact-item"><span>Magang</span><span>PT Gotrade</span></li>
+          </ul>
+          <div class="social-links">
+            <a class="social-link" href="#">LinkedIn</a>
+            <a class="social-link" href="#">Instagram</a>
+            <a class="social-link" href="#">GitHub</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Ingin Kerja Sama?</h3>
+          <p>Saya terbuka untuk peluang kerja dan magang di perusahaan besar. Dengan sikap profesional, cepat belajar, dan motivasi tinggi, saya siap memberi kontribusi nyata dalam tim Anda.</p>
+          <a class="button primary" href="mailto:gunardipatrick@gmail.com">Kirim Email</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Patrick Gunardi. Portofolio modern untuk pelamar profesional.</p>
+    </footer>
+  </main>
+</body>
+</html>
