@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentasi - Portfolio</title>
+    <title>Presentasi Bisnis</title>
     <style>
         * {
             margin: 0;
@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #f5f5f5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,107 +23,214 @@
 
         .presentation-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
 
         .slide {
             display: none;
-            padding: 80px 60px;
-            text-align: center;
-            min-height: 600px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            animation: fadeIn 0.5s ease-in;
+            padding: 60px;
+            min-height: 700px;
+            background: white;
+            animation: fadeIn 0.4s ease-in;
         }
 
         .slide.active {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: block;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .slide h1 {
-            font-size: 3.5em;
-            color: #667eea;
+        /* Title Slide */
+        .slide-title {
+            background: linear-gradient(135deg, #5B4FE3 0%, #3B3FB4 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .slide-title h1 {
+            font-size: 4em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .slide-title .subtitle {
+            font-size: 1.8em;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
         .slide h2 {
-            font-size: 2.5em;
-            color: #764ba2;
-            margin-bottom: 30px;
+            font-size: 2.8em;
+            color: #1a1a1a;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .slide h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .slide p {
-            font-size: 1.3em;
-            color: #333;
-            line-height: 1.8;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
             margin-bottom: 15px;
         }
 
-        .slide ul {
-            list-style: none;
-            text-align: left;
-            display: inline-block;
-            margin: 20px 0;
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .slide li {
+        .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .column-left {
+            padding-right: 30px;
+        }
+
+        .column-right {
+            padding-left: 30px;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .feature-list li {
             font-size: 1.2em;
-            color: #555;
-            margin: 15px 0;
+            color: #333;
+            margin: 20px 0;
             padding-left: 40px;
             position: relative;
+            line-height: 1.6;
         }
 
-        .slide li:before {
+        .feature-list li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: #5B4FE3;
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1.5em;
         }
 
+        /* Grid Layout */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .grid-item {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #5B4FE3;
+        }
+
+        .grid-item h4 {
+            font-size: 1.4em;
+            color: #5B4FE3;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .grid-item p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Chart/Stats Section */
+        .stats-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .stats-box .number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .stats-box .label {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: linear-gradient(135deg, #5B4FE3 0%, #3B3FB4 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(91, 79, 227, 0.4);
+        }
+
+        /* Controls */
         .controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 60px;
-            background: #f8f9fa;
-            border-top: 2px solid #e0e0e0;
+            padding: 25px 60px;
+            background: #f9f9f9;
+            border-top: 1px solid #e0e0e0;
         }
 
         button {
-            background: #667eea;
+            background: #5B4FE3;
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 12px 28px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 1em;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
         button:hover {
-            background: #764ba2;
+            background: #3B3FB4;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(91, 79, 227, 0.3);
         }
 
         button:disabled {
@@ -134,98 +241,256 @@
 
         .slide-counter {
             font-size: 1.1em;
-            color: #667eea;
-            font-weight: bold;
+            color: #5B4FE3;
+            font-weight: 600;
         }
 
-        .slide-1 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Highlight Text */
+        .highlight {
+            color: #5B4FE3;
+            font-weight: 600;
         }
 
-        .slide-1 h1 {
-            color: white;
-            font-size: 4em;
-        }
-
-        .slide-1 p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.5em;
+        .highlight-box {
+            background: #f0f0ff;
+            padding: 20px;
+            border-left: 4px solid #5B4FE3;
+            border-radius: 6px;
+            margin: 20px 0;
         }
 
         @media (max-width: 768px) {
             .slide {
-                padding: 50px 30px;
+                padding: 40px 30px;
                 min-height: auto;
-            }
-
-            .slide h1 {
-                font-size: 2.5em;
             }
 
             .slide h2 {
                 font-size: 2em;
             }
 
-            .slide p {
-                font-size: 1.1em;
+            .slide-title h1 {
+                font-size: 2.5em;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
             }
 
             .controls {
                 padding: 15px 30px;
-            }
-
-            button {
-                padding: 10px 20px;
-                font-size: 0.9em;
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="presentation-container">
-        <!-- Slide 1 -->
-        <div class="slide slide-1 active">
-            <h1>Selamat Datang</h1>
-            <p>Presentasi Portofolio Saya</p>
+        <!-- Slide 1: Title -->
+        <div class="slide slide-title active">
+            <h1>Platform Inovatif</h1>
+            <p class="subtitle">Solusi Digital untuk Bisnis Modern</p>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- Slide 2: Problem -->
         <div class="slide">
-            <h2>Tentang Saya</h2>
-            <p>Saya adalah seorang pengembang web yang bersemangat dengan keahlian dalam HTML, CSS, dan JavaScript.</p>
-            <p>Berdedikasi untuk menciptakan pengalaman pengguna yang luar biasa.</p>
+            <div class="two-column">
+                <div class="column column-left">
+                    <h2>Masalah</h2>
+                    <p>Industri tradisional menghadapi tantangan:</p>
+                    <ul class="feature-list">
+                        <li>Proses yang tidak efisien dan memakan waktu</li>
+                        <li>Kesulitan akses ke layanan berkualitas</li>
+                        <li>Biaya operasional yang tinggi</li>
+                        <li>Kurangnya transparansi dan kontrol</li>
+                    </ul>
+                </div>
+                <div class="column column-right">
+                    <div class="stats-box">
+                        <div class="label">Target Market Size</div>
+                        <div class="number">$2.5B</div>
+                        <div class="label">Pertumbuhan Tahunan</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Slide 3 -->
+        <!-- Slide 3: Solution -->
         <div class="slide">
-            <h2>Keahlian Utama</h2>
-            <ul>
-                <li>HTML5 & CSS3</li>
-                <li>JavaScript & React</li>
-                <li>Responsive Design</li>
-                <li>User Experience (UX)</li>
-                <li>Version Control (Git)</li>
+            <h2>Solusi Kami</h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px;">Platform all-in-one yang menghubungkan penyedia layanan dengan konsumen</p>
+            
+            <div class="grid-3">
+                <div class="grid-item">
+                    <h4>🎯 Efisiensi</h4>
+                    <p>Otomatisasi proses dan kurangi biaya operasional hingga 40%</p>
+                </div>
+                <div class="grid-item">
+                    <h4>💎 Kualitas</h4>
+                    <p>Layanan terjamin dengan standar profesional internasional</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🌍 Skalabilitas</h4>
+                    <p>Ekspansi mudah ke berbagai pasar dan segmen bisnis</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Business Model -->
+        <div class="slide">
+            <h2>Model Bisnis</h2>
+            
+            <div class="grid-3" style="margin-top: 50px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">👤</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">Konsumen</h4>
+                    <p>Akses mudah & harga kompetitif</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">⚡</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">Platform</h4>
+                    <p>Komisi 15% per transaksi</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3em; margin-bottom: 15px;">🎯</div>
+                    <h4 style="font-size: 1.3em; margin-bottom: 10px;">Provider</h4>
+                    <p>Lebih banyak customer & revenue</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p><span class="highlight">Revenue Opportunity:</span> Proyeksi $29M revenue pada tahun ke-4 dengan pertumbuhan 150% YoY</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Market -->
+        <div class="slide">
+            <h2>Analisis Pasar</h2>
+            
+            <div class="grid-3">
+                <div class="grid-item">
+                    <h4>Pasar Utama</h4>
+                    <p>Segmen premium dengan daya beli tinggi. TAM: $2.5B dengan pertumbuhan stabil.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Kompetitor</h4>
+                    <p>Sedikit pemain dengan fokus fragmentasi. Peluang konsolidasi besar.</p>
+                </div>
+                <div class="grid-item">
+                    <h4>Strategi GTM</h4>
+                    <p>Penetrasi bertahap, partnership strategis, dan marketing digital.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p><span class="highlight">Target Penetrasi:</span> 12% market share dalam 5 tahun pertama</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Team -->
+        <div class="slide">
+            <h2>Tim Kami</h2>
+            
+            <div class="grid-3">
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #5B4FE3 0%, #3B3FB4 100%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5em;">👨</div>
+                    <h4>CEO/Co-Founder</h4>
+                    <p>15+ tahun industri</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5em;">👩</div>
+                    <h4>COO/Co-Founder</h4>
+                    <p>10+ tahun operasi</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5em;">💻</div>
+                    <h4>CTO</h4>
+                    <p>8+ tahun tech leadership</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Roadmap -->
+        <div class="slide">
+            <h2>Roadmap Pertumbuhan</h2>
+            
+            <div style="margin-top: 50px;">
+                <div style="display: flex; align-items: center; margin: 30px 0;">
+                    <div style="width: 30px; height: 30px; background: #5B4FE3; border-radius: 50%; margin-right: 20px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">1</div>
+                    <div>
+                        <h4 style="font-size: 1.3em; margin-bottom: 5px;">Q1-Q2 2026</h4>
+                        <p>Soft launch & user acquisition pilot di 3 kota</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; margin: 30px 0;">
+                    <div style="width: 30px; height: 30px; background: #667eea; border-radius: 50%; margin-right: 20px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">2</div>
+                    <div>
+                        <h4 style="font-size: 1.3em; margin-bottom: 5px;">Q3-Q4 2026</h4>
+                        <p>Ekspansi ke 10 kota, target 50K pengguna aktif</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; margin: 30px 0;">
+                    <div style="width: 30px; height: 30px; background: #f5576c; border-radius: 50%; margin-right: 20px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">3</div>
+                    <div>
+                        <h4 style="font-size: 1.3em; margin-bottom: 5px;">2027</h4>
+                        <p>Ekspansi nasional, target $10M revenue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Investasi -->
+        <div class="slide">
+            <h2>Pendanaan</h2>
+            <p style="font-size: 1.2em; margin-bottom: 40px;">Seriesseed round untuk akselerasi pertumbuhan</p>
+            
+            <div class="grid-3">
+                <div style="text-align: center; background: #f0f0ff; padding: 30px; border-radius: 12px;">
+                    <div style="font-size: 2em; color: #5B4FE3; font-weight: 700; margin-bottom: 10px;">$2M</div>
+                    <p>Target Pendanaan</p>
+                </div>
+                <div style="text-align: center; background: #f0f0ff; padding: 30px; border-radius: 12px;">
+                    <div style="font-size: 2em; color: #667eea; font-weight: 700; margin-bottom: 10px;">18%</div>
+                    <p>Equity Offered (saham)</p>
+                </div>
+                <div style="text-align: center; background: #f0f0ff; padding: 30px; border-radius: 12px;">
+                    <div style="font-size: 2em; color: #764ba2; font-weight: 700; margin-bottom: 10px;">3 Tahun</div>
+                    <p>Path to Breakeven</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px;">Penggunaan Dana</h3>
+            <ul class="feature-list">
+                <li><span class="highlight">40%</span> - Product Development & Engineering</li>
+                <li><span class="highlight">35%</span> - Marketing & User Acquisition</li>
+                <li><span class="highlight">15%</span> - Operations & Team Building</li>
+                <li><span class="highlight">10%</span> - Reserve & Contingency</li>
             </ul>
         </div>
 
-        <!-- Slide 4 -->
-        <div class="slide">
-            <h2>Proyek Terbaru</h2>
-            <p><strong>Portfolio Website</strong></p>
-            <p>Sebuah website portofolio yang responsif dan modern untuk menampilkan karya-karya terbaik saya.</p>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="slide">
-            <h2>Terima Kasih</h2>
-            <p>Untuk informasi lebih lanjut, silakan kunjungi portofolio saya atau hubungi saya melalui media sosial.</p>
-            <p style="margin-top: 30px; font-size: 1.1em;">📧 | 💼 | 🔗</p>
+        <!-- Slide 9: Closing -->
+        <div class="slide" style="background: linear-gradient(135deg, #5B4FE3 0%, #3B3FB4 100%); color: white;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center;">
+                <h2 style="color: white; font-size: 3em;">Mari Berkembang Bersama</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.3em; margin-top: 30px;">Investasi Anda adalah langkah menuju transformasi industri</p>
+                <div style="margin-top: 40px; font-size: 1.1em;">
+                    <p>📧 contact@company.com | 📱 +62 XXX-XXXX-XXXX</p>
+                </div>
+            </div>
         </div>
 
         <!-- Controls -->
         <div class="controls">
             <button onclick="previousSlide()">← Sebelumnya</button>
-            <span class="slide-counter"><span id="current">1</span> / <span id="total">5</span></span>
+            <span class="slide-counter"><span id="current">1</span> / <span id="total">9</span></span>
             <button onclick="nextSlide()">Berikutnya →</button>
         </div>
     </div>
@@ -252,7 +517,7 @@
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
             if (e.key === 'ArrowLeft') previousSlide();
         });
 
